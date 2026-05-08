@@ -2,14 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "frontend/package.json",
+      "src": "webstudio_angular_app/frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
         "distDir": "dist"
       }
     },
     {
-      "src": "backend/api/**/.js",
+      "src": "webstudio_angular_app/backend/api/**/.js",
       "use": "@vercel/node"
     }
   ],
