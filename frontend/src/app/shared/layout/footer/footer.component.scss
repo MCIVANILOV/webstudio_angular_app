@@ -1,0 +1,116 @@
+@import "../../../../assets/styles/variables";
+
+footer.footer {
+  padding: 40px 0 54px 0;
+  background-color: #B9D5FD;
+
+  .container {
+    font-size: 16px;
+
+    .footer-main-block {
+      display: flex;
+      align-items: center;
+      margin-bottom: 40px;
+
+      .logo {
+        margin-right: 40px;
+      }
+
+      .footer-menu {
+        nav ul {
+          margin: 0;
+          padding: 0;
+          display: flex;
+
+          li {
+            margin-right: 20px;
+            list-style: none;
+
+            &:last-child {
+              margin-right: 0;
+            }
+
+            a {
+              color: $dark-blue;
+              font-size: 16px;
+              cursor: pointer;
+              text-decoration: none;
+            }
+            &.active a {
+              color: $light-blue;
+            }
+          }
+        }
+      }
+    }
+
+    .footer-contacts {
+      display: flex;
+      gap: 60px;
+
+      .footer-main-title {
+        font-family: Montserrat, sans-serif;
+        font-weight: 500;
+        color: $light-blue;
+        margin-bottom: 10px;
+      }
+
+      .footer-contacts-address {
+        width: 253px;
+      }
+
+      .footer-contacts-phone {
+        width: 153px;
+
+        .footer-contacts-phone-text {
+          text-decoration: none;
+          color: #071739;
+        }
+
+        .button {
+          margin-top: 10px;
+          width: 100%;
+          background-color: $light-blue;
+          padding: 10px 0;
+          font-family: Montserrat, sans-serif;
+          font-weight: 500;
+          font-size: 12px;
+          border: 1px solid $light-blue;
+          cursor: pointer;
+          border-radius: 5px;
+          color: white;
+        }
+      }
+
+      .footer-contacts-email {
+        width: 127px;
+
+        .footer-contacts-email-text {
+          font-size: 14px;
+          color: #071739;
+          text-decoration: none;
+        }
+      }
+
+      .footer-contacts-socials {
+        width: 203px;
+
+        .footer-contacts-socials-title {
+          margin-bottom: 15px;
+        }
+
+        a {
+          margin-right: 12px;
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+
+    .footer-rights {
+      color: $light-blue;
+    }
+  }
+}

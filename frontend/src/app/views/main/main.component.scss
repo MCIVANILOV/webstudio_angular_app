@@ -1,0 +1,347 @@
+@import "../../../assets/styles/variables";
+
+.offers {
+  margin-bottom: 120px;
+
+  .offers-slider {
+    position: relative;
+    .offers-slider-item {
+      position: relative;
+      display: flex;
+      width: 1240px;
+      height: 500px;
+
+      .offers-slider-text-block {
+        position: absolute;
+        width: 703px;
+        height: 100%;
+        background-color: #B9D5FD;
+        padding: 100px 0 98px 80px;
+        box-sizing: border-box;
+        z-index: 2;
+        border-bottom-right-radius: 30% 100%;
+
+        .offers-slider-type {
+          font-weight: 600;
+          font-size: 12px;
+          color: $light-blue;
+          text-transform: uppercase;
+          letter-spacing: 5px;
+        }
+
+        .offers-slider-title {
+          font-family: Lora, sans-serif;
+          font-size: 50px;
+          color: #FFFFFF;
+          margin-bottom: 40px;
+
+
+        }
+
+        .offer-description {
+          width: 456px;
+          color: #FFFFFF;
+          font-size: 24px;
+          margin-bottom: 50px;
+        }
+
+        .offers-slider-button {
+          width: 163px;
+        }
+      }
+
+      .offers-slider-image-block {
+        width: 750px;
+        position: relative;
+        right: -500px;
+      }
+    }
+
+    .offers-slider-arrows {
+      display: flex;
+
+      a {
+        top: calc(50% - 5px);
+        display: flex;
+        position: absolute;
+        cursor: pointer;
+        z-index: 3;
+
+        &.move-backward {
+          left: 10px;
+        }
+
+        &.move-forward {
+          right: 10px;
+        }
+      }
+    }
+
+  }
+
+}
+
+.services {
+  margin-bottom: 120px;
+
+  .services-items {
+    display: flex;
+
+    .services-item {
+      margin-right: 26px;
+      height: 498px;
+
+      .services-item-image {
+        margin-bottom: 15px;
+      }
+
+      .services-item-title {
+        font-family: Montserrat, sans-serif;
+        font-weight: 500;
+        font-size: 20px;
+        color: $light-blue;
+        margin-bottom: 10px;
+      }
+
+      .services-item-text {
+        font-family: Montserrat, sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        margin-bottom: 15px;
+        height: 90px;
+      }
+
+      .services-item-extra {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .services-item-price {
+          font-family: Montserrat, sans-serif;
+          font-weight: 600;
+          color: $light-blue;
+          font-size: 20px;
+        }
+
+        .services-item-button {
+          width: 163px;
+        }
+      }
+    }
+  }
+
+}
+
+.about-us {
+  margin-bottom: 120px;
+
+  .container {
+    display: flex;
+
+    .about-us-image {
+      margin-right: 68px;
+    }
+
+    .about-us-main {
+      font-size: 14px;
+      color: $dark-blue-2;
+
+      .about-us-title {
+        margin-bottom: 20px;
+      }
+
+      .about-us-main-text {
+        width: 633px;
+        margin-bottom: 40px;
+
+        span {
+          font-weight: $main-weight;
+        }
+      }
+
+      .about-us-main-benefits-title {
+        font-size: 26px;
+        margin-bottom: 20px;
+      }
+
+      .about-us-main-benefits-items {
+        display: grid;
+        grid-template-columns: repeat(2, 316px);
+        gap: 20px 71px;
+
+        .about-us-main-benefits-item {
+          display: grid;
+          align-items: center;
+          grid-auto-flow: column;
+
+          .about-us-main-benefits-number {
+            width: 40px;
+            height: 40px;
+            background-color: #B9D5FD;
+            border-radius: 50%;
+            margin-right: 20px;
+            position: relative;
+
+            .number-item {
+              position: absolute;
+              top: -19px;
+              left: 6px;
+              font-family: Lora, sans-serif;
+              font-weight: 500;
+              font-size: 50px;
+              color: $light-blue;
+
+            }
+
+            .edit-elem {
+              left: 10px;
+            }
+          }
+
+          .about-us-main-benefits-text {
+            align-self: self-start;
+            word-wrap: normal;
+
+            span {
+              font-weight: $main-weight;
+            }
+          }
+        }
+      }
+    }
+
+  }
+}
+
+.popular-blog {
+  margin-bottom: 120px;
+
+  .popular-blog-items {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
+
+  a {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    text-decoration: none;
+    color: $light-blue;
+    font-weight: 500;
+    font-size: 20px;
+
+    svg {
+      margin-left: 14px;
+    }
+  }
+
+}
+
+.reviews {
+  margin-bottom: 120px;
+
+  .reviews-title {
+    margin-bottom: 20px;
+  }
+
+  .reviews-carousel {
+    position: relative;
+
+    .review-item {
+      width: 396px;
+      height: 267px;
+      padding: 30px;
+      border: 2px solid $light-blue;
+      border-radius: 10px;
+      box-sizing: border-box;
+
+      .review-item-head {
+        display: flex;
+        align-items: center;
+
+        .review-item-image {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          background-position: center;
+          background-size: cover;
+          margin-right: 26px;
+        }
+
+        .review-item-name {
+          font-family: Montserrat, sans-serif;
+          font-weight: 600;
+          font-size: 18px;
+          color: $light-blue;
+        }
+      }
+
+      .review-item-text {
+        margin-top: 15px;
+        font-size: 16px;
+        line-height: 140%;
+        color: $dark-blue;
+      }
+    }
+
+    .reviews-arrows {
+      display: flex;
+
+      a {
+        top: calc(50% - 5px);
+        display: flex;
+        position: absolute;
+        cursor: pointer;
+
+        &.move-backward {
+          left: -25px;
+        }
+
+        &.move-forward {
+          right: -25px;
+        }
+      }
+    }
+  }
+}
+
+.contacts {
+  margin-bottom: 120px;
+
+  .container {
+    display: flex;
+
+    .contacts-map {
+      margin-right: 26px;
+    }
+
+    .contacts-info-title {
+      margin-bottom: 20px;
+    }
+
+    .contacts-details {
+      margin-bottom: 20px;
+
+      .contacts-details-head {
+        margin-bottom: 10px;
+        font-weight: 500;
+        font-size: 20px;
+        color: $light-blue;
+      }
+
+      .contacts-details-text {
+        font-size: 14px;
+      }
+
+      a {
+        text-decoration: none;
+        color: $dark-blue;
+      }
+
+      .contacts-details-socials > a {
+        margin-right: 20px;
+      }
+    }
+  }
+}

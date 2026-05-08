@@ -1,0 +1,144 @@
+@import "variables";
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  color: $dark-blue;
+}
+
+.container {
+  max-width: $container-width;
+  margin: 0 auto;
+}
+
+.input {
+  width: 422px;
+  box-sizing: border-box;
+  padding: 17px 20px;
+  border: 2px solid #709FDC;
+  border-radius: 3px;
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: $dark-blue;
+}
+
+.main-title {
+  font-family: Lora, sans-serif;
+  font-size: 38px;
+  color: $light-blue;
+  margin-bottom: 40px;
+}
+
+button {
+  text-align: center;
+  padding: 15px;
+  border-radius: 5px;
+  background: $light-blue;
+  box-sizing: border-box;
+  cursor: pointer;
+  border: 0;
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #FFFFFF;
+
+  &:disabled {
+    background: gray;
+    cursor: not-allowed;
+  }
+}
+
+.mat-menu-item {
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+
+  a {
+    text-decoration: none;
+    color: $dark-blue;
+    cursor: pointer;
+  }
+}
+
+.owl-theme .owl-nav.disabled+.owl-dots {
+  position: relative;
+  margin-top: -35px;
+}
+
+.owl-theme .owl-dots .owl-dot span {
+  border: 1px solid white;
+  background: transparent;
+}
+
+.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
+  background: #FFFFFF;
+}
+
+.highlight {
+  color: $light-blue;
+}
+
+.bottom-margin {
+  margin-bottom: 20px !important; /* или примените к конкретному элементу внутри */
+}
+
+.mat-dialog-container {
+  padding: 0 !important;
+}
+
+.main-popup {
+  padding: 94px 153px 86px;
+  text-align: center;
+  width: 422px;
+  position: relative;
+
+  &.main-popup-success {
+    width: 443px;
+    padding: 163px 142px;
+  }
+
+  .main-popup-close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    cursor: pointer;
+  }
+
+  .main-popup-title {
+    margin-bottom: 20px;
+  }
+
+  .main-popup-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .main-popup-info-text {
+      font-size: 14px;
+      margin-bottom: 40px;
+    }
+
+    .button-success {
+      padding: 10px 20px;
+      font-weight: 500;
+      font-size: 12px;
+      width: fit-content;margin-left: auto;
+      margin-right: auto;
+    }
+
+    select {
+      margin-bottom: 5px;
+      color: $light-blue;
+    }
+
+    input {
+      margin-bottom: 5px;
+
+      &:last-of-type {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
