@@ -9,7 +9,7 @@
       }
     },
     {
-      "src": "webstudio_angular_app/backend/api/**/.js",
+      "src": "backend/api/**/.js",
       "use": "@vercel/node"
     }
   ],
@@ -20,6 +20,14 @@
     },
     {
       "src": "/(.*)",
+      "dest": "/index.html"
+    },
+    { 
+      "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot))", 
+      "dest": "/1" 
+    },
+    { 
+      "src": "(.*)",
       "dest": "/index.html"
     }
   ]
