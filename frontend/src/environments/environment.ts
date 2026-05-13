@@ -1,11 +1,12 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
+const isProduction = !window.location.hostname.includes('localhost');
 
 export const environment = {
-  production: false,
-  api: "http://localhost:3000/api/",
-  serverStaticPath: "http://localhost:3000/images/"
+  production: isProduction,
+  api: isProduction ? '/api/' : 'http://localhost:3000/api/',
+  serverStaticPath: isProduction ? '/images/' : 'http://localhost:3000/images/'
 };
 
 /*
