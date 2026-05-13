@@ -17,6 +17,11 @@ const UserModel = require("./src/models/user.model");
 
 const app = express();
 
+app.use((req, res, next) => {
+  console.log('INCOMING:', req.method, req.originalUrl, req.path);
+  next();
+});
+
 // --- ОПТИМИЗАЦИЯ ПОДКЛЮЧЕНИЯ К MONGODB (SERVERLESS CACHE) ---
 let isConnected = false;
 
