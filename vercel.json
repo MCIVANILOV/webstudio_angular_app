@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "cleanUrls": true,
   "functions": {
     "api/app.js": {
       "runtime": "@vercel/node"
@@ -7,8 +8,8 @@
   },
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "api/app.js"
+      "source": "/api/:path*",
+      "destination": "/api/app.js"
     },
     {
       "source": "/((?!api/).*)",
