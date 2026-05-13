@@ -1,99 +1,114 @@
-const mongoose = require('mongoose');
 const express = require('express');
 const cors = require('cors');
+const mongoose = require('mongoose');
+const path = require('path');
+const passport = require('passport');
+const JwtStrategy = require('passport-jwt').Strategy;
+const ExtractJwt = require('passport-jwt').ExtractJwt;
+
 const categoryRoutes = require('./src/routes/category.routes');
 const articleRoutes = require('./src/routes/article.routes');
 const requestRoutes = require('./src/routes/request.routes');
 const commentRoutes = require('./src/routes/comment.routes');
 const authRoutes = require('./src/routes/auth.routes');
 const userRoutes = require('./src/routes/user.routes');
-const MongoDBConnection = require("./src/utils/common/connection");
 const config = require("./src/config/config");
-const path = require('path');
-const passport = require('passport');
 const UserModel = require("./src/models/user.model");
-const JwtStrategy = require('passport-jwt').Strategy,
-    ExtractJwt = require('passport-jwt').ExtractJwt;
 
-MongoDBConnection.getConnection((error, connection) => {
-    if (error || !connection) {
-        console.log('Db connection error', error);
+const app = express();
+
+// --- ОПТИМИЗАЦИЯ ПОДКЛЮЧЕНИЯ К MONGODB (SERVERLESS CACHE) ---
+let isConnected = false;
+
+async function connectToDatabase() {
+    if (isConnected) {
         return;
     }
-    const app = express();
-
-    app.use(express.static(path.join(__dirname, 'public')));
-    app.use(express.static(path.join(__dirname, 'frontend/dist/frontend')));
-    app.use(express.json());
-    app.use(cors({origin: true, credentials: true}));
-
-    passport.use(new JwtStrategy({
-        jwtFromRequest: ExtractJwt.fromHeader('x-auth'),
-        secretOrKey: config.secret,
-        algorithms: ["HS256"],
-    }, async (payload, next) => {
-
-        if (!payload.id) {
-            const error = new Error('Не валидный токен');
-            error.status = 401;
-            return next(error);
+    try {
+        // Берем переменную из Vercel Environment Variables
+        const mongoURI = process.env.MONGODB_URI;
+        if (!mongoURI) {
+            throw new Error("Переменная окружения MONGODB_URI не задана в настройках Vercel");
         }
 
-        let user = null;
-        try {
-            user = await UserModel.findOne({_id: payload.id});
-        } catch (e) {
-            console.log(e);
-            const error = new Error('Ошибка базы данных при проверке токена');
-            error.status = 500;
-            return next(error);
-        }
+        await mongoose.connect(mongoURI);
+        isConnected = true;
+        console.log('MongoDB connected successfully via Vercel Serverless');
+    } catch (error) {
+        console.error('Db connection error:', error);
+        throw error;
+    }
+}
 
+// Middleware для автоматического подключения к БД при каждом запросе
+app.use(async (req, res, next) => {
+    try {
+        await connectToDatabase();
+        next();
+    } catch (err) {
+        res.status(500).send({ error: true, message: "Database connection failed" });
+    }
+});
+
+// --- НАСТРОЙКИ EXPRESS MIDDLEWARES ---
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json());
+app.use(cors({ origin: true, credentials: true }));
+
+// --- НАСТРОЙКА PASSPORT JWT ---
+passport.use(new JwtStrategy({
+    jwtFromRequest: ExtractJwt.fromHeader('x-auth'),
+    secretOrKey: config.secret,
+    algorithms: ["HS256"],
+}, async (payload, next) => {
+    if (!payload.id) {
+        const error = new Error('Не валидный токен');
+        error.status = 401;
+        return next(error);
+    }
+
+    try {
+        const user = await UserModel.findOne({ _id: payload.id });
         if (user) {
             if (!user.refreshToken) {
                 const error = new Error('Ошибка авторизации');
                 error.status = 401;
                 return next(error);
             }
-            // Передаем payload, так как он содержит id и email, которые используются в контроллерах
             return next(null, payload);
         }
+    } catch (e) {
+        console.log(e);
+        const error = new Error('Ошибка базы данных при проверке токена');
+        error.status = 500;
+        return next(error);
+    }
 
-        const error = new Error('Пользователь не найден');
-        error.status = 401;
-        next(error);
-    }));
+    const error = new Error('Пользователь не найден');
+    error.status = 401;
+    next(error);
+}));
 
-    app.use(passport.initialize());
+app.use(passport.initialize());
 
-    app.use("/api", authRoutes);
-    app.use("/api/categories", categoryRoutes);
-    app.use("/api/articles", articleRoutes);
-    app.use("/api/requests", requestRoutes);
-    app.use("/api/comments", commentRoutes);
-    app.use("/api/users", userRoutes);
+// --- МАРШРУТЫ (API ROUTES) ---
+app.use("/api", authRoutes);
+app.use("/api/categories", categoryRoutes);
+app.use("/api/articles", articleRoutes);
+app.use("/api/requests", requestRoutes);
+app.use("/api/comments", commentRoutes);
+app.use("/api/users", userRoutes);
 
-    app.use(function (req, res, next) {
-        const err = new Error('Not Found');
-        err.status = 404;
-        next(err);
-    });
+// --- ОБРАБОТКА ОШИБОК ---
+app.use(function (req, res, next) {
+    const err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+});
 
-    app.use(function (err, req, res, next) {
-        res.status(err.statusCode || err.status || 500).send({error: true, message: err.message});
-    });
+app.use(function (err, req, res, next) {
+    res.status(err.statusCode || err.status || 500).send({ error: true, message: err.message });
+});
 
-    module.exports = app;
-    
-    // app.listen(config.port, () =>
-    //     console.log(`Server started`)
-    // );
-
-})
-
-const mongoURI = process.env.MONGODB_URI; // Render сам подставит значение сюда
-
-mongoose.connect(mongoURI)
-    .then(() => console.log('MongoDB connected...'))
-    .catch(err => console.log(err));
-
+// --- ЭКСПОРТ ДЛЯ VERCEL (СТРОГО В КОРНЕ ФАЙЛА) ---
+module.exports = app;
