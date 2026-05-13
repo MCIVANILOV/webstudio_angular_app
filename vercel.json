@@ -1,11 +1,17 @@
 {
   "version": 2,
   "cleanUrls": true,
-  "functions": {
-    "api/app.js": {
-      "runtime": "@vercel/node"
+  "builds": [
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "dist" }
+    },
+    {
+      "src": "api/app.js",
+      "use": "@vercel/node"
     }
-  },
+  ],
   "rewrites": [
     {
       "source": "/api/:path*",
