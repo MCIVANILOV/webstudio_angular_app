@@ -3,7 +3,7 @@
   "cleanUrls": true,
   "functions": {
     "api/app.js": {
-      "runtime": "@vercel/node"
+      "runtime": "@vercel/node@canary"
     }
   },
   "rewrites": [
