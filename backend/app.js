@@ -83,10 +83,11 @@ MongoDBConnection.getConnection((error, connection) => {
         res.status(err.statusCode || err.status || 500).send({error: true, message: err.message});
     });
 
-    app.listen(config.port, () =>
-        console.log(`Server started`)
-    );
-
+    module.exports = app;
+    
+    // app.listen(config.port, () =>
+    //     console.log(`Server started`)
+    // );
 
 })
 
