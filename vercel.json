@@ -1,6 +1,16 @@
 {
   "version": 2,
   "cleanUrls": true,
+  "builds": [
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build"
+    },
+    {
+      "src": "api/app.js",
+      "use": "@vercel/node"
+    }
+  ],
   "rewrites": [
     {
       "source": "/api/:path*",
@@ -8,7 +18,7 @@
     },
     {
       "source": "/((?!api/).*)",
-      "destination": "/index.html"
+      "destination": "/frontend/$1"
     }
   ]
 }
