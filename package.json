@@ -1,12 +1,9 @@
 {
-  "name": "webstudio-monorepo",
+  "name": "web-angular-app",
   "version": "1.0.0",
   "private": true,
-  "workspaces": [
-    "frontend",
-    "backend"
-  ],
   "scripts": {
-    "build": "yarn workspace frontend build"
+    "install:frontend": "cd frontend && npm install",
+    "build:frontend": "cd frontend && npm run build"
   }
 }

@@ -1,27 +1,21 @@
 {
   "version": 2,
   "cleanUrls": true,
-<<<<<<< HEAD
-=======
-  "builds": [
-    {
-      "src": "backend/app.js",
-      "use": "@vercel/node"
-    }
-  ],
+  "installCommand": "npm run install:frontend",
+  "buildCommand": "npm run build:frontend",
+  "outputDirectory": "frontend/dist",
   "functions": {
     "backend/app.js": {
       "runtime": "nodejs20.x"
     }
   },
->>>>>>> 58de7ed402cf8031f1c975dd6a188b53619bfbbe
   "rewrites": [
     {
       "source": "/api/:path*",
       "destination": "/backend/app.js"
     },
     {
-      "source": "/((?!api/).*)",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ]
