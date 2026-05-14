@@ -3,9 +3,7 @@
   "cleanUrls": true,
   "outputDirectory": "frontend/dist",
   "functions": {
-    "backend/app.js": {
-      "runtime": "nodejs20.x"
-    }
+    "backend/app.js": {}
   },
   "rewrites": [
     {
