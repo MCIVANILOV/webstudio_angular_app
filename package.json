@@ -1,0 +1,12 @@
+{
+  "name": "webstudio-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "build": "yarn workspace frontend build"
+  }
+}
