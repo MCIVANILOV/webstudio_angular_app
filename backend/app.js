@@ -102,12 +102,12 @@ passport.use(new JwtStrategy({
 app.use(passport.initialize());
 
 // --- МАРШРУТЫ (API ROUTES) ---
-app.use(authRoutes);
-app.use("/categories", categoryRoutes);
-app.use("/articles", articleRoutes);
-app.use("/requests", requestRoutes);
-app.use("/comments", commentRoutes);
-app.use("/users", userRoutes);
+app.use("/api", authRoutes);
+app.use("/api/categories", categoryRoutes);
+app.use("/api/articles", articleRoutes);
+app.use("/api/requests", requestRoutes);
+app.use("/api/comments", commentRoutes);
+app.use("/api/users", userRoutes);
 
 // --- ОБРАБОТКА ОШИБОК ---
 app.use(function (req, res, next) {
