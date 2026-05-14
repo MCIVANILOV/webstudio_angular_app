@@ -1,8 +1,6 @@
 {
   "version": 2,
   "cleanUrls": true,
-<<<<<<< HEAD
-=======
   "builds": [
     {
       "src": "backend/app.js",
@@ -14,7 +12,6 @@
       "runtime": "nodejs20.x"
     }
   },
->>>>>>> 58de7ed402cf8031f1c975dd6a188b53619bfbbe
   "rewrites": [
     {
       "source": "/api/:path*",
