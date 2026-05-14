@@ -3,16 +3,7 @@
   "cleanUrls": true,
   "buildCommand": "cd frontend && yarn install && yarn build",
   "outputDirectory": "frontend/dist",
-  "functions": {
-    "backend/app.js": {
-      "runtime": "nodejs20.x"
-    }
-  },
   "rewrites": [
-    {
-      "source": "/api/:path*",
-      "destination": "/backend/app.js"
-    },
     {
       "source": "/(.*)",
       "destination": "/index.html"
