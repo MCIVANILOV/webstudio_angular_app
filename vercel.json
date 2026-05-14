@@ -1,6 +1,8 @@
 {
   "version": 2,
   "cleanUrls": true,
+  "buildCommand": "cd frontend && yarn install && ng build",
+  "outputDirectory": "frontend/dist",
   "functions": {
     "backend/app.js": {
       "runtime": "nodejs20.x"
@@ -12,7 +14,7 @@
       "destination": "/backend/app.js"
     },
     {
-      "source": "/((?!api/).*)",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ]
