@@ -1,12 +1,6 @@
 {
   "version": 2,
   "cleanUrls": true,
-  "builds": [
-    {
-      "src": "backend/app.js",
-      "use": "@vercel/node"
-    }
-  ],
   "functions": {
     "backend/app.js": {
       "runtime": "nodejs22.x"
