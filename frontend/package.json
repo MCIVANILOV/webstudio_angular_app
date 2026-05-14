@@ -4,7 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+<<<<<<< HEAD
     "build": "pnpm exec ng build",
+=======
+    "build": "pnpm exec ng build"",
+>>>>>>> 906242db0b2b9c2e226eb348c40203bab67c35f0
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
