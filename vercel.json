@@ -3,7 +3,9 @@
   "cleanUrls": true,
   "outputDirectory": "frontend/dist",
   "functions": {
-    "backend/app.js": {}
+    "backend/app.js": {
+      "runtime": "@vercel/node@20.x"
+    }
   },
   "rewrites": [
     {
