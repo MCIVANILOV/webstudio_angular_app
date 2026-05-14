@@ -2,14 +2,7 @@
   "version": 2,
   "cleanUrls": true,
   "outputDirectory": "frontend/dist",
-  "functions": {
-    "backend/app.js": {}
-  },
   "rewrites": [
-    {
-      "source": "/api/:path*",
-      "destination": "/backend/app.js"
-    },
     {
       "source": "/(.*)",
       "destination": "/index.html"
