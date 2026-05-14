@@ -1,7 +1,7 @@
 {
   "version": 2,
   "cleanUrls": true,
-  "buildCommand": "cd frontend && yarn install && ng build",
+  "buildCommand": "cd frontend && yarn install && yarn build",
   "outputDirectory": "frontend/dist",
   "functions": {
     "backend/app.js": {
