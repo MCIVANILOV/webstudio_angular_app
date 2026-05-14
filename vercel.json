@@ -1,13 +1,19 @@
 {
   "version": 2,
-  "routes": [
+  "cleanUrls": true,
+  "functions": {
+    "backend/app.js": {
+      "runtime": "@vercel/node"
+    }
+  },
+  "rewrites": [
     {
-      "src": "^/api/(.*)",
-      "dest": "api/$1"
+      "source": "/api/:path*",
+      "destination": "/backend/app.js"
     },
     {
-      "src": "/(.*)",
-      "dest": "frontend/$1"
+      "source": "/((?!api/).*)",
+      "destination": "/index.html"
     }
   ]
 }
