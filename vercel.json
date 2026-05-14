@@ -1,8 +1,6 @@
 {
   "version": 2,
   "cleanUrls": true,
-  "installCommand": "npm run install:frontend",
-  "buildCommand": "npm run build:frontend",
   "outputDirectory": "frontend/dist",
   "functions": {
     "backend/app.js": {
